@@ -5,7 +5,9 @@ const util = require('util');
 const async = require('async');
 const stack = require('callsite');
 const errors = require('./errors.js');
-const logger = require('./logger.js');
+
+// console.log(require('./logging.js'));
+// const logger = require('./logging.js').createLogger();
 
 const STRIP_COMMENTS = /(\/\/.*$)|(\/\*[\s\S]*?\*\/)|(\s*=[^,\)]*(('(?:\\'|[^'\r\n])*')|("(?:\\"|[^"\r\n])*"))|(\s*=[^,\)]*))/mg;
 const ARGUMENT_NAMES = /([^\s,]+)/g;
@@ -156,10 +158,7 @@ function syncToCallback(func, arrArgs, callback) {
 function namedArgsWrapper(func) {
     // ** Returns a function that can be called using a named argument list
     const info = getFunctionInfo(func);
-
-    logger.debug(info);
-
-
+    
     // ** Synchronous execution
     if (!info.hasCallback) {
         return function (args, callback) {

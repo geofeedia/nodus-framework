@@ -7,6 +7,14 @@
     "type": "git",
     "url": "https://gotham.bradserbu.com:100443/bradserbu/nodus-framework.git"
   },
+  "main": "./src",
   "dependencies": {
+    "async": "^1.5.2",
+    "bunyan": "^1.8.0",
+    "callsite": "^1.0.0",
+    "callstack": "^1.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
   }
 }
