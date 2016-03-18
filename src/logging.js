@@ -22,8 +22,7 @@ function createLogger(options) {
         // ** Load the options name from the callsite
         const caller = functions.callsite();
         const filename = caller.filename;
-
-        console.log('WORKING DIRECTORY:', process.cwd());
+        
         options.name = path.relative(process.cwd(), filename);
     }
 
