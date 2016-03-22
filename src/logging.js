@@ -23,7 +23,8 @@ function createLogger(options) {
         const caller = functions.callsite();
         const filename = caller.filename;
         
-        options.name = path.relative(process.cwd(), filename);
+        // options.name = path.relative(process.cwd(), filename);
+        options.name = filename;
     }
 
     return bunyan.createLogger(options);
