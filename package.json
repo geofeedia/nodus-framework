@@ -1,6 +1,6 @@
 {
   "name": "nodus-framework",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "license": "Apache-2.0",
   "repository": {
@@ -12,9 +12,10 @@
     "async": "^1.5.2",
     "bunyan": "^1.8.0",
     "callsite": "^1.0.0",
-    "callstack": "^1.0.1",
     "event-stream": "^3.3.2",
-    "highland": "^2.7.1"
+    "highland": "^2.7.1",
+    "underscore": "^1.8.3",
+    "yargs": "^4.3.1"
   },
   "devDependencies": {
     "mocha": "^2.4.5"

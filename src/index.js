@@ -1,4 +1,5 @@
 module.exports = {
+    cli: require('./cli'),
     errors: require('./errors'),
     functions: require('./functions'),
     logging: require('./logging'),

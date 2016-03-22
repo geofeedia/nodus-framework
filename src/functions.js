@@ -158,7 +158,7 @@ function syncToCallback(func, arrArgs, callback) {
 function namedArgsWrapper(func) {
     // ** Returns a function that can be called using a named argument list
     const info = getFunctionInfo(func);
-    
+
     // ** Synchronous execution
     if (!info.hasCallback) {
         return function (args, callback) {
@@ -192,10 +192,41 @@ function namedArgsWrapper(func) {
     };
 }
 
+function command(func) {
+    const info = getFunctionInfo(func);
+
+    // ** Function will call callback directly
+    return (args, options) => new Promise((resolve, reject) => {
+
+        // ** Map named arguments to an argument array
+        const arg_array = mapNamedArgs(args, info.paramList);
+
+        // ** Add the callback to the argument list and invoke the function
+        if (info.hasCallback) {
+            logger.warn('FUNC: Has a callback...');
+            arg_array.push((err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            });
+        }
+
+        // ** Determine the context of the command
+        const context = {
+            __args: args,
+            __options: options
+        };
+
+        // ** Call the function with the 'this' argument injected with args/options
+        const result = func.apply(context, arg_array);
+        resolve(result);
+    });
+}
+
 module.exports.appendArgument = appendArgument;
 module.exports.callsite = callsite;
 module.exports.workers = workers;
 module.exports.namedArgsWrapper = namedArgsWrapper;
 module.exports.mapNamedArgs = mapNamedArgs;
 module.exports.getFunctionInfo = getFunctionInfo;
+module.exports.command = command;
 
