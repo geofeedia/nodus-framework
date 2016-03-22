@@ -65,6 +65,14 @@ function appendArgument(fn, arg) {
 }
 
 /**
+ * Checks if the value supplied is a promise.
+ * @param value
+ */
+function isPromise(value) {
+    return util.isFunction(value.then);
+}
+
+/**
  * Get Information about who included this module
  */
 function callsite() {
@@ -229,4 +237,4 @@ module.exports.namedArgsWrapper = namedArgsWrapper;
 module.exports.mapNamedArgs = mapNamedArgs;
 module.exports.getFunctionInfo = getFunctionInfo;
 module.exports.command = command;
-
+module.exports.isPromise = isPromise;
