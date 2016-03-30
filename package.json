@@ -1,11 +1,11 @@
 {
   "name": "nodus-framework",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://gotham.bradserbu.com:100443/bradserbu/nodus-framework.git"
+    "url": "https://github.com/bradserbu/nodus-framework.git"
   },
   "main": "./src",
   "dependencies": {
