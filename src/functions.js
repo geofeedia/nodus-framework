@@ -124,7 +124,6 @@ function workers(fn, instances) {
     }
 }
 
-
 /**
  * Returns an array that can be used to call a function with named arguments
  * @param namedArgs
