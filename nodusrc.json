@@ -1,0 +1,13 @@
+{
+  "logger": {
+    "appenders": {
+      "fluent": {
+        "provider": "loggers:fluentd",
+        "config": {
+          "host": "localhost",
+          "port": 11111
+        }
+      }
+    }
+  }
+}
