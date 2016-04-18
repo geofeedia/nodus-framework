@@ -4,6 +4,9 @@
     "providers": [
       {
         "type": "./loggers/console"
+      },
+      {
+        "type": "./loggers/fluentd"
       }
     ]
   }
