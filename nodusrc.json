@@ -1,12 +1,10 @@
 {
-  "loggers": [
-    {
-      "provider": "loggers/fluentd",
-      "level": "debug",
-      "config": {
-        "host": "fluentd",
-        "port": 23432
+  "logger": {
+    "level": "INFO",
+    "providers": [
+      {
+        "type": "./loggers/console"
       }
-    }
-  ]
+    ]
+  }
 }
