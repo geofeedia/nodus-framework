@@ -4,13 +4,6 @@
     "providers": [
       {
         "type": "./loggers/console"
-      },
-      {
-        "type": "./loggers/fluentd",
-        "config": {
-          "host": "fluentd",
-          "port": 4324123
-        }
       }
     ]
   }
