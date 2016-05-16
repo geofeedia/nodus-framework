@@ -1,6 +1,6 @@
 {
   "name": "nodus-framework",
-  "version": "0.2.3",
+  "version": "0.2.8",
   "description": "Foundation libraries for nodus based applications.",
   "license": "Apache-2.0",
   "repository": {
@@ -19,6 +19,7 @@
     "jsonstream": "^1.0.3",
     "ramda": "^0.21.0",
     "underscore": "^1.8.3",
+    "uuid": "^2.0.2",
     "yargs": "^4.6.0"
   },
   "devDependencies": {}
