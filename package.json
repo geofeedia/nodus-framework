@@ -13,6 +13,7 @@
     "bunyan": "^1.8.0",
     "callsite": "^1.0.0",
     "eventemitter2": "^1.0.0",
+    "expand-home-dir": "0.0.3",
     "extend": "^3.0.0",
     "fs-extra": "^0.26.7",
     "highland": "^2.7.4",
