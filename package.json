@@ -18,11 +18,8 @@
     "fs-extra": "^0.26.7",
     "highland": "^2.7.4",
     "jsonstream": "^1.0.3",
-<<<<<<< HEAD
     "measured": "^1.1.0",
-=======
     "q": "^1.4.1",
->>>>>>> master
     "ramda": "^0.21.0",
     "underscore": "^1.8.3",
     "uuid": "^2.0.2",
