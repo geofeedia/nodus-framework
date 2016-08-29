@@ -1,29 +1,22 @@
 {
   "name": "nodus-framework",
-  "version": "0.2.24",
+  "version": "3.0.0",
   "description": "Foundation libraries for nodus based applications.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bradserbu/nodus-framework.git"
+    "url": "https://github.com/geofeedia/nodus-framework.git"
   },
   "main": "./lib/",
   "dependencies": {
-    "async": "^1.5.2",
-    "bunyan": "^1.8.0",
-    "callsite": "^1.0.0",
-    "eventemitter2": "^1.0.0",
-    "expand-home-dir": "0.0.3",
-    "extend": "^3.0.0",
-    "fs-extra": "^0.26.7",
-    "highland": "^2.7.4",
-    "jsonstream": "^1.0.3",
-    "measured": "^1.1.0",
-    "q": "^1.4.1",
-    "ramda": "^0.21.0",
-    "underscore": "^1.8.3",
-    "uuid": "^2.0.2",
-    "yargs": "^4.6.0"
+    "bluebird": "^3.4.3",
+    "debug": "^2.2.0",
+    "finalhandler": "^0.5.0",
+    "highland": "^3.0.0-beta.2",
+    "http-shutdown": "^1.0.3",
+    "orientjs": "^2.2.2",
+    "router": "^1.1.4",
+    "yargs": "^5.0.0"
   },
   "devDependencies": {}
 }

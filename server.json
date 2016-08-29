@@ -1,0 +1,10 @@
+{
+  "services": {
+    "storage": {
+      "provider": "lib/database.js"
+    },
+    "api": {
+      "provider": "lib/api.js"
+    }
+  }
+}

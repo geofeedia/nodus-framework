@@ -1,0 +1,65 @@
+{
+  "Common": {
+    "Language": {
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "The name of the language.",
+          "required": true
+        },
+        "Code": {
+          "type": "string",
+          "description": "The character code for the language (eg 'en', 'ru')",
+          "required": true
+        }
+      }
+    }
+  },
+  "Social": {
+    "User": {
+      "description": "A social media user",
+      "properties": {
+        "UserName": {
+          "type": "string",
+          "description": "The username of the social media user"
+        }
+      }
+    },
+    "Post": {
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The ID used by the social network to identify the post",
+          "required": true
+        },
+        "Text": {
+          "type": "string",
+          "description": "The text of the social media post."
+        },
+        "Url": {
+          "type": "string",
+          "description": "The URL to the social media post."
+        }
+      },
+      "relationships": {
+        "author": {
+          "required": true,
+          "to": "SocialUser"
+        },
+        "containsLanguage": {
+          "to": "Commmon.Language",
+          "properties": {
+            "Score": {
+              "type": "integer",
+              "description": "The weighted confidence level that the item contains text contains the target language."
+            },
+            "Percentage": {
+              "type": "decimal",
+              "description": "The percentage of the total post text made in the target language"
+            }
+          }
+        }
+      }
+    }
+  }
+}
