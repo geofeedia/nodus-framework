@@ -2,7 +2,7 @@
 
 // Dependencies
 const path = require('path');
-const Storage = require('../lib/database');
+const Storage = require('../services/database');
 const Models = require('../lib/models');
 const config = require('../config');
 

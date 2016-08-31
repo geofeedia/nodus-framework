@@ -2,7 +2,8 @@
 
 // Dependencies
 const $ = require('highland');
-const debug = require('debug')
+const Promise = require('bluebird');
+const debug = require('debug');
 const orientjs = require('orientjs');
 const Service = require('../lib/services').Service;
 
@@ -39,13 +40,15 @@ class Database extends Service {
         if (first.toLowerCase() !== 'live')
             statement = 'LIVE ' + statement;
 
+        logger('MONITOR', statement);
         const query = this.db.liveQuery(statement);
 
-        const stream = $.merge([
-            $('live-update', query),
-            $('live-insert', query),
-            $('live-delete', query)
-        ]);
+        // const stream = $.merge([
+        //     $('live-update', query),
+        //     $('live-insert', query),
+        //     $('live-delete', query)
+        // ]);
+        const stream = $('live-insert', query);
 
         return stream;
     }

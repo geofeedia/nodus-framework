@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-node bin/monitor.js "$@"
+node bin/query.js monitor "$@"

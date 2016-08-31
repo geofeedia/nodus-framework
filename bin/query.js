@@ -6,7 +6,7 @@ const util = require('util');
 const yargs = require('yargs');
 const config = require('../config');
 const Promise = require('bluebird');
-const Database = require('../lib/database');
+const Database = require('../services/database');
 const Program = require('../lib/program');
 
 /**
@@ -51,11 +51,14 @@ function printStream(stream) {
     // Return a promise when the stream completes or errors
     return new Promise((resolve, reject) =>
         $(stream)
-            .flatMap(data => {
-                console.error('DATA', data);
+            .tap(data => {
+                // console.error('DATA', data);
                 printResults(data)
             })
-            .stopOnError(err => reject(err))
+            .stopOnError(err => {
+                console.error('STREAM_ERROR', err);
+                reject(err)
+            })
             .done(() => {
                 console.error('STREAM_FINISHED');
                 resolve();
@@ -71,6 +74,7 @@ function printStream(stream) {
 function printResults(result) {
 
     if (isStream(result)) {
+        console.log('STREAM');
         return printStream(result);
     }
 
@@ -99,10 +103,12 @@ yargs
         'Run a forward looking query that will display the results of a query in realtime.', {
             statement: {}
         },
-        argv => Database(config.database)
-            .monitor(argv.statement)
-            .then(printResults)
-            .finally(Program.shutdown)
+        argv =>
+            printResults(
+                Database(config.database)
+                    .monitor(argv.statement)
+            )
+                .finally(Program.shutdown)
     )
     .help()
     .argv;

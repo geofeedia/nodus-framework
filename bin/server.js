@@ -32,8 +32,9 @@ function getArgs(req) {
 
 /**
  * Run a function and return the result
- * @param value
  * @constructor
+ * @param handler
+ * @param options
  */
 function Request(handler, options) {
     if (util.isNullOrUndefined(handler))
@@ -47,8 +48,6 @@ function Request(handler, options) {
 
         // Extract arguments from the request object
         const args = getArgs(req);
-
-        logger('REQUEST_ARGS', args);
 
         // Return a promise that resolves and calls next
         const handleRequest = util.isFunction(handler)
@@ -76,14 +75,13 @@ function Request(handler, options) {
 
 /**
  * Stream results returned from the handler to clients.
- * @param handler
+ * @param stream
  * @param options
  * @constructor
  */
 function Stream(stream, options) {
-
     return (req, res, next) => {
-        next();
+        next(Error('Streaming responses are not yet implemented', 'NOT_IMPLEMENTED'));
     };
 }
 
@@ -96,19 +94,19 @@ const api = Api(config.api);
 const database = Database(config.database);
 
 // Endpoints
-api.routes.get('/run', Request(args => {
+api.routes.get('/api/query/run', Request(args => {
     const query = args.query;
 
     if (!query)
         throw Error('"query" is a required argument.', 'ARGUMENT_REQUIRED');
 
-    logger('/run', {query: query});
+    logger('api/query/run', {query: query});
     return database.run(query)
 }));
 // api.routes.get('/monitor', Stream(args => database.monitor(args)));
 
 // Shutdown Request
-api.routes.get('/shutdown', (req, res) => {
+api.routes.get('/api/shutdown', (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.end('Shutting down...');
     req.connection.end(); //close the socket
