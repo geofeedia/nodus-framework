@@ -1,9 +1,9 @@
 'use strict';
 
 // Dependencies
-const finalhandler = require('finalhandler');
 const http = require('http');
 const http_shutdown = require('http-shutdown');
+const finalhandler = require('finalhandler');
 
 const Router = require('router');
 const Service = require('../lib/services').Service;

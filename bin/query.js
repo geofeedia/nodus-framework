@@ -74,7 +74,6 @@ function printStream(stream) {
 function printResults(result) {
 
     if (isStream(result)) {
-        console.log('STREAM');
         return printStream(result);
     }
 

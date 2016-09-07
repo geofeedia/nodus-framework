@@ -1,5 +1,10 @@
 'use strict';
 
+// Monitor Inserts, Deletes, and Updates
+const DEFAULT_OPTIONS = {
+    all: true
+};
+
 // Dependencies
 const $ = require('highland');
 const Promise = require('bluebird');
@@ -30,6 +35,9 @@ class Database extends Service {
 
     monitor(statement, options) {
 
+        // Argument Defaults
+        options = options || DEFAULT_OPTIONS;
+
         // Extract the first word of the statement
         const matches = statement.match(/^\S+/);
         if (matches.length === 0)
@@ -43,14 +51,13 @@ class Database extends Service {
         logger('MONITOR', statement);
         const query = this.db.liveQuery(statement);
 
-        // const stream = $.merge([
-        //     $('live-update', query),
-        //     $('live-insert', query),
-        //     $('live-delete', query)
-        // ]);
-        const stream = $('live-insert', query);
+        const streams = [];
 
-        return stream;
+        if (options.all || options.inserted) streams.push($('live-insert', query).map(item => ['inserted', item.content]));
+        if (options.all || options.updated) streams.push($('live-update', query).map(item => ['updated', item.content]));
+        if (options.all || options.deleted) streams.push($('live-delete', query).map(item => ['deleted', item.content]));
+
+        return $.merge(streams);
     }
 
     stop() {
