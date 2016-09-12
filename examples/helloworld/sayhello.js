@@ -1,7 +1,7 @@
-const logger = require('../../lib').logger;
+'use strict';
 
-module.exports = name => {
-    logger.info('sayhello', {name: name});
-
+function sayHello(name) {
     return `Hello, ${name}!`;
-};
+}
+
+module.exports = sayHello;
